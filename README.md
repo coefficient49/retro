@@ -16,7 +16,7 @@ using it in a script
 ```python
 from retro.main import *
 
-peptides = ["ACTYACTYACTAYCTYA","ACTYACTYACTAYCTYA"]
+peptides = ["ACTYACTYACTAYCTYA","ACTYACTYXCTXYCTYA"]
 enzymes = ["BsaI","EcoRV"]
 enzymes = enzymes_cls = RestrictionBatch([get_enzyme_class_from_str(x) for x in enzymes])
 
