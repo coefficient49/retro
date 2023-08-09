@@ -43,7 +43,7 @@ def getargs():
         "-H",
         "--Hamming",
         dest="ham",
-        default=True,
+        action='store_true',
         help="""do you want to do hamming distance? This is a toggle, include it to turn on hamming, it is off by default.
     """
     )
@@ -150,7 +150,7 @@ def main():
 
     enzymes_cls = RestrictionBatch([get_enzyme_class_from_str(x) for x in enzymes])
 
-    outputs = run_all(peptides,enzyme_filter=enzymes_cls)
+    outputs = run_all(peptides,enzyme_filter=enzymes_cls,hamming_check=args.ham)
 
     print("saving files to", file_out,qc_out)
     
