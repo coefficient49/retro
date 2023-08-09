@@ -1,4 +1,5 @@
 from retro.peptide_control import *
+from retro.nucleotide_control import *
 import argparse
 from pathlib import Path
 import sys
