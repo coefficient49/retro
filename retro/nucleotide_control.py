@@ -98,7 +98,7 @@ def rev_translate(peptide,enzyme_filter:list=None,**kwargs):
                 if enzyme_filter == None:
                     failed_enzyme_check=False
                 else:
-                    print(enzyme_filter)
+                    # print(enzyme_filter)
                     failed_enzyme_check = restriction_enzyme_filter(seq,enzyme_filter)
                     
                 # if failed_enzyme_check:
