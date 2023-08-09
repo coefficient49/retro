@@ -38,6 +38,17 @@ def getargs():
                 nd column being the DNA sequence.
     """
     )
+
+    parser.add_argument(
+        "-H",
+        "--Hamming",
+        dest="ham",
+        default=True,
+        help="""do you want to do hamming distance? This is a toggle, include it to turn on hamming, it is off by default.
+    """
+    )
+
+
     parser.add_argument(
         "-s",
         "--seed",
@@ -71,7 +82,7 @@ def getargs():
     return args
 
 
-def run_all(peptides,enzyme_filter=None,**kwargs):
+def run_all(peptides,enzyme_filter=None,hamming_check=True,**kwargs):
     if len(peptides) > 10000: 
         print("not recommended to have over 10000 sequenes!")
 
@@ -79,12 +90,16 @@ def run_all(peptides,enzyme_filter=None,**kwargs):
     for peptide in tqdm(peptides,desc="initial reverse translation"):
         dna[peptide] = rev_translate(peptide,enzyme_filter=enzyme_filter,**kwargs)
 
-    ## make a matrix for AA so we only search for DNA similarities in AA sequences with high similarities
-    distance_dict = make_AA_dist_matrix(peptides)
+    if hamming_check:
+        ## make a matrix for AA so we only search for DNA similarities in AA sequences with high similarities
+        distance_dict = make_AA_dist_matrix(peptides)
 
-    ## optimize for DNA sequence similarities
-    dna2 = optimize_for_distance(distance_dict,dna)
-    hist = get_histogram(dna2)
+        ## optimize for DNA sequence similarities
+        dna2 = optimize_for_distance(distance_dict,dna)
+        hist = get_histogram(dna2)
+    else:
+        hist = None
+        dna2 = dna
 
 
 

@@ -94,7 +94,10 @@ def rev_translate(peptide,enzyme_filter=None,**kwargs):
                 ##### filter functions goes here
                 failed_kmer_check = kmer_filter(seq)
                 failed_gc_check = gc_filter(seq)
-                failed_enzyme_check = restriction_enzyme_filter(seq,enzyme_filter)
+                if enzyme_filter != None:
+                    failed_enzyme_check = restriction_enzyme_filter(seq,enzyme_filter)
+                else:
+                    failed_enzyme_check=False
                 # if failed_enzyme_check:
                 #     print(peptide,seq, "failed Enzyme check")
                 # if failed_kmer_check:
