@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools","wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "retro"
+version = "1.0.0"
+description = "reverse translation and optimization"
+requires-python = ">=3.9"
+keywords = ["python", "protein", "reverse translate"]
+dependencies = [
+    "levenshtein",
+    "biopython",
+    "tqdm",
+    "streamlit",
+    "numpy",
+    "pandas",
+    "seaborn",
+    "python_codon_tables",
+    "regex",
+    "dnaio"
+]
+
+[project.scripts]
+retro = "retro:main.main"

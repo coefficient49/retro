@@ -1,0 +1,10 @@
+levenshtein
+biopython
+tqdm
+streamlit
+numpy
+pandas
+seaborn
+python_codon_tables
+regex
+dnaio
