@@ -56,6 +56,7 @@ def restriction_enzyme_filter(seq:str=None,enzyme=[],flanking=""):
     seq = f"{flank1}{seq}{flank2}"
     seq = Seq(seq)
     v2 = []
+    # enzyme  should be restriction batch class
     for v in enzyme.search(seq).values():
         v2+=v
     return len(v2)>0
@@ -70,7 +71,7 @@ def make_nucleotides(AA):
         codon_selected=codon_selected)
     return pick
     
-def rev_translate(peptide,enzyme_filter=None,**kwargs):
+def rev_translate(peptide,enzyme_filter:list=None,**kwargs):
     picks = []
     for pos,AA in enumerate(peptide):
         pick = make_nucleotides(AA)
@@ -94,10 +95,12 @@ def rev_translate(peptide,enzyme_filter=None,**kwargs):
                 ##### filter functions goes here
                 failed_kmer_check = kmer_filter(seq)
                 failed_gc_check = gc_filter(seq)
-                if enzyme_filter != None:
-                    failed_enzyme_check = restriction_enzyme_filter(seq,enzyme_filter)
-                else:
+                if enzyme_filter == None:
                     failed_enzyme_check=False
+                else:
+                    print(enzyme_filter)
+                    failed_enzyme_check = restriction_enzyme_filter(seq,enzyme_filter)
+                    
                 # if failed_enzyme_check:
                 #     print(peptide,seq, "failed Enzyme check")
                 # if failed_kmer_check:

@@ -92,7 +92,7 @@ def run_all(peptides,enzyme_filter=None,hamming_check=True,**kwargs):
         print("not recommended to have over 10000 sequenes!")
 
     dna = {}
-    for peptide in tqdm(peptides,desc="initial reverse translation"):
+    for peptide in tqdm(peptides,desc="initial reverse translation with kmer, GC, and cut site [optional] optimization"):
         dna[peptide] = rev_translate(peptide,enzyme_filter=enzyme_filter,**kwargs)
 
     if hamming_check:
