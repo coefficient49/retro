@@ -112,8 +112,9 @@ def run_all(peptides,enzyme_filter=None,hamming_check=True,**kwargs):
     try:
         final_qc_output = pd.DataFrame({"distance_counts":hist})
     except:
-        final_qc_output = pd.DataFrame.from_dict({"distance_counts":hist},orient="index").T
+        final_qc_output = None
 
+        
     return dict(final_df_output=final_df_output,final_qc_output=final_qc_output)
 
 
