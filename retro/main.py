@@ -84,8 +84,8 @@ def getargs():
     args = parser.parse_args()
 
     return args
-def RestrictionBatch(*args,**kwargs):
-    return RestrictionBatch(*args,**kwargs)
+
+
 
 def run_all(peptides,enzyme_filter=None,hamming_check=True,**kwargs):
     if len(peptides) > 10000: 
@@ -114,7 +114,7 @@ def run_all(peptides,enzyme_filter=None,hamming_check=True,**kwargs):
     except:
         final_qc_output = None
 
-        
+
     return dict(final_df_output=final_df_output,final_qc_output=final_qc_output)
 
 
