@@ -4,6 +4,9 @@ import argparse
 from pathlib import Path
 import sys
 
+
+
+
 def getargs():
     parser = argparse.ArgumentParser(
         prog="retro",
@@ -81,7 +84,8 @@ def getargs():
     args = parser.parse_args()
 
     return args
-
+def RestrictionBatch(*args,**kwargs):
+    return RestrictionBatch(*args,**kwargs)
 
 def run_all(peptides,enzyme_filter=None,hamming_check=True,**kwargs):
     if len(peptides) > 10000: 
